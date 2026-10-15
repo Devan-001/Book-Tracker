@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book Tracker — Organize your personal reading library, track current books, and celebrate every finished read.">
+  <title>Book Tracker</title>
+  <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== COMPACT HEADER ===== -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">📚</span>
+        <span class="brand-title">Book Tracker</span>
+      </div>
+      <span class="header-badge">Personal Reading Library</span>
+    </div>
+  </header>
+
+  <!-- ===== MAIN APP CONTAINER ===== -->
+  <div class="app-container">
+
+    <!-- ===== COMPACT WELCOME SECTION ===== -->
+    <section class="welcome-section" aria-label="Welcome">
+      <h1 class="welcome-title">Your next chapter starts here.</h1>
+      <p class="welcome-subtitle">Organize your personal reading library, track current books, and celebrate every finished read.</p>
+    </section>
+
+    <!-- ===== TWO-COLUMN DASHBOARD GRID ===== -->
+    <main class="dashboard-grid">
+
+      <!-- LEFT PANEL: Add Book Panel (~32%) -->
+      <aside class="panel form-panel" aria-label="Add a new book">
+        <div class="panel-header">
+          <h2 class="panel-title">Add a New Book</h2>
+          <p class="panel-subtitle">Expand your bookshelf</p>
+        </div>
+
+        <form id="book-form" novalidate>
+          <!-- Book Title Field -->
+          <div class="form-group">
+            <label for="book-title" class="form-label">Book Title</label>
+            <input
+              type="text"
+              id="book-title"
+              class="form-input"
+              placeholder="e.g. The Great Gatsby"
+              autocomplete="off"
+              aria-describedby="title-error"
+            >
+            <span id="title-error" class="error-message" role="alert"></span>
+          </div>
+
+          <!-- Author Field -->
+          <div class="form-group">
+            <label for="book-author" class="form-label">Author</label>
+            <input
+              type="text"
+              id="book-author"
+              class="form-input"
+              placeholder="e.g. F. Scott Fitzgerald"
+              autocomplete="off"
+              aria-describedby="author-error"
+            >
+            <span id="author-error" class="error-message" role="alert"></span>
+          </div>
+
+          <!-- Reading Status Dropdown -->
+          <div class="form-group">
+            <label for="book-status" class="form-label">Reading Status</label>
+            <select id="book-status" class="form-select">
+              <option value="To read" selected>To read</option>
+              <option value="Reading">Reading</option>
+              <option value="Finished">Finished</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="add-book-btn" class="btn-add">Add Book</button>
+        </form>
+      </aside>
+
+      <!-- RIGHT SECTION: Library Collection (~68%) -->
+      <section class="panel library-panel" aria-label="Your book library">
+        <div class="library-header">
+          <div class="library-title-group">
+            <h2 class="panel-title">Your Books</h2>
+            <p class="panel-subtitle">Manage reading progress and explore your collection</p>
+          </div>
+
+          <!-- Search input — filters the displayed book list -->
+          <div class="search-wrapper">
+            <input
+              type="text"
+              id="search-input"
+              class="form-input search-input"
+              placeholder="Search by title or author..."
+              aria-label="Search books by title or author"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <!-- Empty state message — shown when no books exist at all -->
+        <p id="empty-message" class="empty-state">
+          No books added yet. Use the form to start your reading list!
+        </p>
+
+        <!-- No matches message — shown when search finds nothing -->
+        <p id="no-match-message" class="empty-state" style="display: none;">
+          No books match your search.
+        </p>
+
+        <!-- Books will be inserted here by JavaScript -->
+        <div id="book-list" class="book-list"></div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Book Tracker &mdash; Built with HTML, CSS, and Vanilla JavaScript</p>
+  </footer>
+
+  <!-- Load JavaScript after the HTML is ready -->
+  <script src="app.js"></script>
+</body>
+</html>
